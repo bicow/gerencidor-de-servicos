@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\servicos;
+use Illuminate\Http\Client\Request as ClientRequest;
+use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +18,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $firstService = new Servicos();
+    $firstService->Nome = 'Conserto de carro';
+    $firstService->Telefone = '11999999999';
+    $firstService->Origem = 'SP';
+    $firstService->Observacao = '-';
+    $firstService->save();
     return view('welcome');
 });
